@@ -39,41 +39,38 @@ class _HomePageState extends State<HomePage> {
             ),
             Container(
               alignment: Alignment.topLeft,
-              width: 360,
               margin: const EdgeInsets.all(20),
               // padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 228, 228, 228),
+                color: const Color.fromARGB(255, 228, 228, 228),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
+                  const Padding(
+                    padding: EdgeInsets.all(10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'DETERG LIQ INVICTO LIMAO 12X500ML',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Text(
+                        Text(
                           '40145',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                           ),
-                        ),
-                        Text(barcode),
+                        )
                       ],
                     ),
                   ),
                   Container(
-                    width: 360,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(15),
