@@ -1,4 +1,4 @@
-import 'package:estoque_logistica/home/home_page.dart';
+import 'package:estoque_logistica/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
