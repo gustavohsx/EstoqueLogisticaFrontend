@@ -1,5 +1,4 @@
 // import 'package:estoque_logistica/barcode/barcode.dart';
-import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:estoque_logistica/widgets/information.dart';
 import 'package:estoque_logistica/widgets/information_title.dart';
 import 'package:estoque_logistica/style/base_text_styles.dart';
@@ -29,16 +28,16 @@ class _ProductInformationState extends State<ProductInformation> {
   int? rua = 0;
   int? numero = 0;
   int? apartamento = 0;
-  int? qtd_geral = 0;
-  int? qtd_bloqueada = 0;
-  int? qtd_avaria = 0;
-  int? qtd_reservada = 0;
-  int? qtd_disponivel = 0;
-  String? dt_ult_entrada = 'Colocar';
-  int? tipo_altura_palete = 0;
-  int? altura_palete = 0;
-  int? lastro_palete = 0;
-  int? qt_total_palete = 0;
+  int? qtdGeral = 0;
+  int? qtdBloqueada = 0;
+  int? qtdAvaria = 0;
+  int? qtdReservada = 0;
+  int? qtdDisponivel = 0;
+  String? dtUltEntrada = 'Carregando...';
+  int? tipoAlturaPalete = 0;
+  int? alturaPalete = 0;
+  int? lastroPalete = 0;
+  int? qtTotalPalete = 0;
   String? gtincodauxiliartrib = 'Carregando...';
   String? codauxiliartrib = 'Carregando...';
   String? gtincodauxiliar = 'Carregando...';
@@ -69,16 +68,16 @@ class _ProductInformationState extends State<ProductInformation> {
       rua = record.data['rua'];
       numero = record.data['numero'];
       apartamento = record.data['apto'];
-      qtd_geral = record.data['qtestger'];
-      qtd_bloqueada = record.data['qtbloqueada'];
-      qtd_avaria = record.data['qtindeniz'];
-      qtd_reservada = record.data['qtreservada'];
-      qtd_disponivel = record.data['qtdisponivel'];
-      dt_ult_entrada = 'Colocar';
-      tipo_altura_palete = record.data['tipoalturapalete'];
-      altura_palete = record.data['alturapal'];
-      lastro_palete = record.data['lastropal'];
-      qt_total_palete = record.data['qttotpal'];
+      qtdGeral = record.data['qtestger'];
+      qtdBloqueada = record.data['qtbloqueada'];
+      qtdAvaria = record.data['qtindeniz'];
+      qtdReservada = record.data['qtreservada'];
+      qtdDisponivel = record.data['qtdisponivel'];
+      dtUltEntrada = record.data['dtultent'];
+      tipoAlturaPalete = record.data['tipoalturapalete'];
+      alturaPalete = record.data['alturapal'];
+      lastroPalete = record.data['lastropal'];
+      qtTotalPalete = record.data['qttotpal'];
       gtincodauxiliartrib = record.data['gtincodauxiliartrib'];
       codauxiliartrib = record.data['codauxiliartrib'];
       gtincodauxiliar = record.data['gtincodauxiliar'];
@@ -95,10 +94,10 @@ class _ProductInformationState extends State<ProductInformation> {
 
   @override
   Widget build(BuildContext context) {
-    final received_id = ModalRoute.of(context)!.settings.arguments as String?;
-    if (received_id != id) {
-      id = received_id;
-      attDataProduct(received_id);
+    final receivedId = ModalRoute.of(context)!.settings.arguments as String?;
+    if (receivedId != id) {
+      id = receivedId;
+      attDataProduct(receivedId);
     }
 
     return Scaffold(
@@ -210,27 +209,27 @@ class _ProductInformationState extends State<ProductInformation> {
                             ),
                             Information(
                               title: 'Qtd. Geral',
-                              info: '$qtd_geral',
+                              info: '$qtdGeral',
                             ),
                             Information(
                               title: 'Qtd. Bloqueada',
-                              info: '$qtd_bloqueada',
+                              info: '$qtdBloqueada',
                             ),
                             Information(
                               title: 'Qtd. Avaria',
-                              info: '$qtd_avaria',
+                              info: '$qtdAvaria',
                             ),
                             Information(
                               title: 'Qtd. Reservada',
-                              info: '$qtd_reservada',
+                              info: '$qtdReservada',
                             ),
                             Information(
                               title: 'Qtd. Disponível',
-                              info: '$qtd_disponivel',
+                              info: '$qtdDisponivel',
                             ),
                             Information(
                               title: 'Data Ult. Entrada',
-                              info: 'Colocar isso',
+                              info: '$dtUltEntrada',
                             ),
                             const SizedBox(height: 20),
                             const InformationTitle(
@@ -238,19 +237,19 @@ class _ProductInformationState extends State<ProductInformation> {
                             ),
                             Information(
                               title: 'Tipo Altura Palete',
-                              info: '$tipo_altura_palete',
+                              info: '$tipoAlturaPalete',
                             ),
                             Information(
                               title: 'Altura',
-                              info: '$altura_palete',
+                              info: '$alturaPalete',
                             ),
                             Information(
                               title: 'Lastro',
-                              info: '$lastro_palete',
+                              info: '$lastroPalete',
                             ),
                             Information(
                               title: 'Quantidade Total Palete',
-                              info: '$qt_total_palete',
+                              info: '$qtTotalPalete',
                             ),
                             const SizedBox(height: 20),
                             const InformationTitle(
