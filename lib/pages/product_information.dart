@@ -5,7 +5,7 @@ import 'package:estoque_logistica/style/base_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
 
-final pb = PocketBase('http://127.0.0.1:8090');
+final pb = PocketBase('https://spessoa.fly.dev');
 
 class ProductInformation extends StatefulWidget {
   const ProductInformation({Key? key}) : super(key: key);
@@ -50,10 +50,10 @@ class _ProductInformationState extends State<ProductInformation> {
   }
 
   void attDataProduct(String? id) async {
-    await pb.admins.authWithPassword(
-      'gustavohsx07@gmail.com',
-      'gustavo@13',
-    );
+    await pb.collection('users').authWithPassword(
+          'default',
+          'Sorriso.123',
+        );
 
     try {
       final record = await pb.collection('produto').getOne('$id');

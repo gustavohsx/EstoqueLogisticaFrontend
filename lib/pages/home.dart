@@ -2,8 +2,9 @@ import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pocketbase/pocketbase.dart';
+import 'package:estoque_logistica/barcode/barcode.dart';
 
-final pb = PocketBase('http://127.0.0.1:8090');
+final pb = PocketBase('https://spessoa.fly.dev');
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -23,6 +24,25 @@ class _HomeState extends State<Home> {
 
   void goProductInfo(String id) {
     Navigator.pushNamed(context, '/product', arguments: id);
+  }
+
+  void searchProduct(codigo) async {
+    print(codigo);
+    await pb.collection('users').authWithPassword(
+          'default',
+          'Sorriso.123',
+        );
+    try {
+      print('entou try');
+      RecordModel record = await pb
+          .collection('produto')
+          .getFirstListItem('codprod="$codigo" || codauxiliar="$codigo"');
+      print('ID: ${record.id}');
+      goProductInfo(record.id);
+      // print(record);
+    } catch (e) {
+      print('Produto não encontrado! $e');
+    }
   }
 
   @override
@@ -54,6 +74,7 @@ class _HomeState extends State<Home> {
                         border: OutlineInputBorder(),
                         label: Text('Digite o código'),
                       ),
+                      keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly
                       ],
@@ -62,21 +83,8 @@ class _HomeState extends State<Home> {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () async {
-                      print(_controller.value.text);
-                      await pb.admins.authWithPassword(
-                        'gustavohsx07@gmail.com',
-                        'gustavo@13',
-                      );
-                      var record;
-                      try {
-                        record = await pb
-                            .collection('produto')
-                            .getFirstListItem('codprod="${_controller.text}"');
-                        goProductInfo(record.id);
-                        // print(record);
-                      } catch (e) {
-                        print('Produto não encontrado! $e');
-                      }
+                      var codigo = _controller.text;
+                      searchProduct(codigo);
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -97,7 +105,12 @@ class _HomeState extends State<Home> {
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      print('cliquei abrir camera');
+                      CameraBarcode cam = CameraBarcode();
+                      String codigo = await cam.scan();
+                      searchProduct(codigo);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amber,
                       shape: RoundedRectangleBorder(
