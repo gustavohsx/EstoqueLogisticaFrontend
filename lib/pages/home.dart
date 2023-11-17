@@ -1,3 +1,5 @@
+import 'package:estoque_logistica/models/product_model.dart';
+import 'package:estoque_logistica/repositoty/product_repository.dart';
 import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -22,27 +24,14 @@ class _HomeState extends State<Home> {
     _controller = TextEditingController();
   }
 
-  void goProductInfo(String id) {
-    Navigator.pushNamed(context, '/product', arguments: id);
+  void goProductInfo(ProductModel produto) {
+    Navigator.pushNamed(context, '/product', arguments: produto);
   }
 
-  void searchProduct(codigo) async {
-    print(codigo);
-    await pb.collection('users').authWithPassword(
-          'default',
-          'Sorriso.123',
-        );
-    try {
-      print('entou try');
-      RecordModel record = await pb
-          .collection('produto')
-          .getFirstListItem('codprod="$codigo" || codauxiliar="$codigo"');
-      print('ID: ${record.id}');
-      goProductInfo(record.id);
-      // print(record);
-    } catch (e) {
-      print('Produto não encontrado! $e');
-    }
+  void searchProduct(String codigo) async {
+    final repositorio = ProductRepository();
+    ProductModel produto = await repositorio.findOneProduct(codigo);
+    goProductInfo(produto);
   }
 
   @override
