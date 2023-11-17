@@ -3,10 +3,7 @@ import 'package:estoque_logistica/repositoty/product_repository.dart';
 import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pocketbase/pocketbase.dart';
 import 'package:estoque_logistica/barcode/barcode.dart';
-
-final pb = PocketBase('https://spessoa.fly.dev');
 
 class Home extends StatefulWidget {
   const Home({super.key});

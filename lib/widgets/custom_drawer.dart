@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
+  void goConfiguration(context) {
+    Navigator.pushNamed(context, '/config');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -22,7 +26,7 @@ class CustomDrawer extends StatelessWidget {
               padding: EdgeInsets.all(50),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () => goConfiguration(context),
               child: const Row(
                 children: [
                   Icon(
