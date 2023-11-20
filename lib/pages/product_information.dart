@@ -1,5 +1,4 @@
 import 'package:estoque_logistica/models/product_model.dart';
-import 'package:estoque_logistica/style/base_text_styles.dart';
 import 'package:estoque_logistica/widgets/product_information_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -23,9 +22,9 @@ class _ProductInformationState extends State<ProductInformation> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Estoque',
-          style: TextStyle(color: Colors.white),
+        title: Text(
+          produto.descricao ?? '',
+          style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
       ),
@@ -34,13 +33,6 @@ class _ProductInformationState extends State<ProductInformation> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                'Produto Encontrado:',
-                style: BaseTextStyles.mainTitle,
-              ),
               ProductInformationWidget(produto),
             ],
           ),

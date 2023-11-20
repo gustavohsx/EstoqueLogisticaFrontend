@@ -7,27 +7,27 @@ class BaseTextStyles {
   );
 
   static const TextStyle productTitle = TextStyle(
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle productSubTitle = TextStyle(
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: FontWeight.w700,
   );
 
   static const TextStyle informationTitleBold = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 
   static const TextStyle productInformationNormal = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.normal,
   );
 
   static const TextStyle productInformationBold = TextStyle(
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
   );
 }
