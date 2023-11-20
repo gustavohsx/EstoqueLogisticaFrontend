@@ -1,12 +1,17 @@
+import 'package:estoque_logistica/config/shared_pref.dart';
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 class ProductRepository {
-  Future<ProductModel> findOneProduct(String codigo) async {
-    final pb = PocketBase('https://spessoa.fly.dev');
+  Future<ProductModel?> findOneProduct(String codigo) async {
+    SharedPref prefs = SharedPref();
+    String? host = await prefs.read('server');
+    String? user = await prefs.read('user');
+    String? password = await prefs.read('password');
+    final pb = PocketBase(host ?? 'https://spessoa.fly.dev');
     await pb.collection('users').authWithPassword(
-          'default',
-          'Sorriso.123',
+          user ?? 'default',
+          password ?? 'Sorriso.123',
         );
     try {
       RecordModel record = await pb
@@ -79,8 +84,7 @@ class ProductRepository {
       );
     } catch (e) {
       print('Produto não encontrado! $e');
-      return ProductModel('', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-          0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, 0, 0, '');
+      return null;
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/repositoty/product_repository.dart';
+import 'package:estoque_logistica/widgets/alerts.dart';
 import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late TextEditingController _controller;
+  Alerts alerts = Alerts();
 
   @override
   void initState() {
@@ -27,8 +29,8 @@ class _HomeState extends State<Home> {
 
   void searchProduct(String codigo) async {
     final repositorio = ProductRepository();
-    ProductModel produto = await repositorio.findOneProduct(codigo);
-    goProductInfo(produto);
+    ProductModel? produto = await repositorio.findOneProduct(codigo);
+    produto != null ? goProductInfo(produto) : alerts.productNotFound(context);
   }
 
   @override
@@ -48,7 +50,7 @@ class _HomeState extends State<Home> {
           children: [
             const Text('Inserir Código/Código de Barras'),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             Center(
               child: Column(
