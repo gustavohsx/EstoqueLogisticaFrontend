@@ -47,12 +47,39 @@ class _ConfigurationState extends State<Configuration> {
     getServer();
   }
 
+  void confirmationSaveData() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirmação'),
+          content: const Text('Confirma a Alteração dos Dados'),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Fechar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                saveData();
+              },
+              child: const Text('Salvar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Configuração',
+          'Configurações',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -103,7 +130,7 @@ class _ConfigurationState extends State<Configuration> {
             const SizedBox(height: 15),
             Center(
               child: ElevatedButton(
-                onPressed: () => saveData(),
+                onPressed: () => confirmationSaveData(),
                 child: const Text('Salvar'),
               ),
             )

@@ -16,14 +16,14 @@ class CustomDrawer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 20,
+              height: 50,
             ),
             const Text(
               'Menu',
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const Padding(
-              padding: EdgeInsets.all(50),
+              padding: EdgeInsets.all(5),
             ),
             TextButton(
               onPressed: () => goConfiguration(context),
@@ -34,12 +34,13 @@ class CustomDrawer extends StatelessWidget {
                     color: Colors.black,
                   ),
                   SizedBox(
-                    width: 20,
+                    width: 5,
                   ),
                   Text(
                     'Configurações',
                     style: TextStyle(
                       color: Colors.black,
+                      fontSize: 20,
                     ),
                   ),
                 ],
