@@ -8,12 +8,24 @@ class ProductRepository {
     String? host = await prefs.read('server');
     String? user = await prefs.read('user');
     String? password = await prefs.read('password');
+    bool isLogin = false;
     final pb = PocketBase(host ?? 'https://spessoa.fly.dev');
-    await pb.collection('users').authWithPassword(
-          user ?? 'default',
-          password ?? 'Sorriso.123',
-        );
     try {
+      await pb.collection('users').authWithPassword(
+            user ?? 'default',
+            password ?? 'Sorriso.123',
+          );
+      isLogin = true;
+    } catch (e) {
+      print(host);
+      print(user);
+      print(password);
+      String erro = e.toString();
+      print(erro);
+      String erro_split = erro.substring((erro.lastIndexOf('message:')));
+      print(erro_split.substring(0, erro_split.lastIndexOf('data') - 2));
+    }
+    if (isLogin) {
       RecordModel record = await pb
           .collection('produto')
           .getFirstListItem('codprod="$codigo" || codauxiliar="$codigo"');
@@ -82,8 +94,7 @@ class ProductRepository {
         qtdDisponivel,
         dtultent,
       );
-    } catch (e) {
-      print('Produto não encontrado! $e');
+    } else {
       return null;
     }
   }

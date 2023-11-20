@@ -86,55 +86,57 @@ class _ConfigurationState extends State<Configuration> {
         ),
         backgroundColor: Colors.blue,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Endereço do Servidor'),
-            const SizedBox(height: 15),
-            SizedBox(
-              child: TextField(
-                controller: _enderecoController,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  hintText: server,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Endereço do Servidor'),
+              const SizedBox(height: 15),
+              SizedBox(
+                child: TextField(
+                  controller: _enderecoController,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    hintText: server,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 15),
-            const Text('Usuário'),
-            const SizedBox(height: 15),
-            SizedBox(
-              child: TextField(
-                controller: _userController,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  hintText: user,
+              const SizedBox(height: 15),
+              const Text('Usuário'),
+              const SizedBox(height: 15),
+              SizedBox(
+                child: TextField(
+                  controller: _userController,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    hintText: user,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 15),
-            const Text('Senha'),
-            const SizedBox(height: 15),
-            SizedBox(
-              child: TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  hintText: password,
+              const SizedBox(height: 15),
+              const Text('Senha'),
+              const SizedBox(height: 15),
+              SizedBox(
+                child: TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    hintText: password,
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 15),
-            Center(
-              child: ElevatedButton(
-                onPressed: () => confirmationSaveData(),
-                child: const Text('Salvar'),
-              ),
-            )
-          ],
+              const SizedBox(height: 15),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () => confirmationSaveData(),
+                  child: const Text('Salvar'),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
