@@ -1,7 +1,16 @@
+import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:estoque_logistica/routes/routes.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ByteData data =
+      await PlatformAssetBundle().load('assets/ca/lets-encrypt-r3.pem');
+  SecurityContext.defaultContext
+      .setTrustedCertificatesBytes(data.buffer.asUint8List());
+
   runApp(const MyApp());
 }
 

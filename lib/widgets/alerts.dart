@@ -19,13 +19,33 @@ class Alerts {
     );
   }
 
-  void productNotFound(context) {
+  void cameraError(context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Produto não Encontrado!'),
-          content: const Text('Produto não cadastrado ou código incorreto'),
+          title: const Text('Erro!'),
+          content: const Text(
+              'Não foi possível abrir a Câmera. Se o problema persistir, Consulte o Suporte!'),
+          actions: <Widget>[
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Fechar'))
+          ],
+        );
+      },
+    );
+  }
+
+  void generic(context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Alerta!'),
+          content: Text(message),
           actions: <Widget>[
             ElevatedButton(
                 onPressed: () {

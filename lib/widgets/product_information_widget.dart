@@ -11,6 +11,7 @@ class ProductInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 300,
       alignment: Alignment.topLeft,
       margin: const EdgeInsets.all(20),
       // padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -38,6 +39,7 @@ class ProductInformationWidget extends StatelessWidget {
             ),
           ),
           Container(
+            clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(15),
@@ -45,127 +47,130 @@ class ProductInformationWidget extends StatelessWidget {
               ),
               color: Color.fromARGB(255, 231, 224, 236),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const InformationTitle(
-                    title: 'Informações',
-                  ),
-                  Information(
-                    title: 'Embalagem',
-                    info: produto.embalagem,
-                  ),
-                  Information(
-                    title: 'Unidade',
-                    info: produto.unidade,
-                  ),
-                  Information(
-                    title: 'Peso Liquido',
-                    info: '${produto.pesoliq} kg',
-                  ),
-                  Information(
-                    title: 'Peso Bruto',
-                    info: '${produto.pesobruto} kg',
-                  ),
-                  Information(
-                    title: 'Cod. Fabrica',
-                    info: produto.codfab,
-                  ),
-                  const SizedBox(height: 20),
-                  const InformationTitle(
-                    title: 'Endereço',
-                  ),
-                  Information(
-                    title: 'Modulo',
-                    info: '${produto.modulo}',
-                  ),
-                  Information(
-                    title: 'Rua',
-                    info: '${produto.rua}',
-                  ),
-                  Information(
-                    title: 'Número',
-                    info: '${produto.numero}',
-                  ),
-                  Information(
-                    title: 'Apartamento',
-                    info: '${produto.apto}',
-                  ),
-                  const SizedBox(height: 20),
-                  const InformationTitle(
-                    title: 'Estoque',
-                  ),
-                  Information(
-                    title: 'Qtd. Geral',
-                    info: '${produto.qtestger}',
-                  ),
-                  Information(
-                    title: 'Qtd. Bloqueada',
-                    info: '${produto.qtbloqueada}',
-                  ),
-                  Information(
-                    title: 'Qtd. Avaria',
-                    info: '${produto.qtindeniz}',
-                  ),
-                  Information(
-                    title: 'Qtd. Reservada',
-                    info: '${produto.qtreservada}',
-                  ),
-                  Information(
-                    title: 'Qtd. Disponível',
-                    info: '${produto.qtdisponivel}',
-                  ),
-                  Information(
-                    title: 'Data Ult. Entrada',
-                    info: produto.dtultent,
-                  ),
-                  const SizedBox(height: 20),
-                  const InformationTitle(
-                    title: 'Palete',
-                  ),
-                  Information(
-                    title: 'Tipo Altura Palete',
-                    info: '${produto.tipoalturapelete}',
-                  ),
-                  Information(
-                    title: 'Altura',
-                    info: '${produto.alturapal}',
-                  ),
-                  Information(
-                    title: 'Lastro',
-                    info: '${produto.lastropal}',
-                  ),
-                  Information(
-                    title: 'Quantidade Total Palete',
-                    info: '${produto.qttotal}',
-                  ),
-                  const SizedBox(height: 20),
-                  const InformationTitle(
-                    title: 'Informações Adicionais',
-                  ),
-                  Information(
-                    title: 'GTIN Unidade Tributável',
-                    info: produto.gtincodauxiliartrib,
-                  ),
-                  Information(
-                    title: 'EAN Unidade Tributável',
-                    info: produto.codauxiliartrib,
-                  ),
-                  Information(
-                    title: 'GTIN Unidade Venda',
-                    info: produto.gtincodauxiliar,
-                  ),
-                  Information(
-                    title: 'Unidade Venda',
-                    info: produto.codauxiliar,
-                  ),
-                  Information(
-                    title: 'GTIN Unidade Master',
-                    info: produto.gtincodauxiliar2,
-                  ),
-                ],
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const InformationTitle(
+                      title: 'Informações',
+                    ),
+                    Information(
+                      title: 'Embalagem',
+                      info: produto.embalagem,
+                    ),
+                    Information(
+                      title: 'Unidade',
+                      info: produto.unidade,
+                    ),
+                    Information(
+                      title: 'Peso Liquido',
+                      info: '${produto.pesoliq} kg',
+                    ),
+                    Information(
+                      title: 'Peso Bruto',
+                      info: '${produto.pesobruto} kg',
+                    ),
+                    Information(
+                      title: 'Cod. Fabrica',
+                      info: produto.codfab,
+                    ),
+                    const SizedBox(height: 20),
+                    const InformationTitle(
+                      title: 'Endereço',
+                    ),
+                    Information(
+                      title: 'Modulo',
+                      info: '${produto.modulo}',
+                    ),
+                    Information(
+                      title: 'Rua',
+                      info: '${produto.rua}',
+                    ),
+                    Information(
+                      title: 'Número',
+                      info: '${produto.numero}',
+                    ),
+                    Information(
+                      title: 'Apartamento',
+                      info: '${produto.apto}',
+                    ),
+                    const SizedBox(height: 20),
+                    const InformationTitle(
+                      title: 'Estoque',
+                    ),
+                    Information(
+                      title: 'Qtd. Geral',
+                      info: '${produto.qtestger}',
+                    ),
+                    Information(
+                      title: 'Qtd. Bloqueada',
+                      info: '${produto.qtbloqueada}',
+                    ),
+                    Information(
+                      title: 'Qtd. Avaria',
+                      info: '${produto.qtindeniz}',
+                    ),
+                    Information(
+                      title: 'Qtd. Reservada',
+                      info: '${produto.qtreservada}',
+                    ),
+                    Information(
+                      title: 'Qtd. Disponível',
+                      info: '${produto.qtdisponivel}',
+                    ),
+                    Information(
+                      title: 'Data Ult. Entrada',
+                      info: produto.dtultent,
+                    ),
+                    const SizedBox(height: 20),
+                    const InformationTitle(
+                      title: 'Palete',
+                    ),
+                    Information(
+                      title: 'Tipo Altura Palete',
+                      info: '${produto.tipoalturapelete}',
+                    ),
+                    Information(
+                      title: 'Altura',
+                      info: '${produto.alturapal}',
+                    ),
+                    Information(
+                      title: 'Lastro',
+                      info: '${produto.lastropal}',
+                    ),
+                    Information(
+                      title: 'Quantidade Total Palete',
+                      info: '${produto.qttotal}',
+                    ),
+                    const SizedBox(height: 20),
+                    const InformationTitle(
+                      title: 'Informações Adicionais',
+                    ),
+                    Information(
+                      title: 'GTIN Unidade Tributável',
+                      info: produto.gtincodauxiliartrib,
+                    ),
+                    Information(
+                      title: 'EAN Unidade Tributável',
+                      info: produto.codauxiliartrib,
+                    ),
+                    Information(
+                      title: 'GTIN Unidade Venda',
+                      info: produto.gtincodauxiliar,
+                    ),
+                    Information(
+                      title: 'Unidade Venda',
+                      info: produto.codauxiliar,
+                    ),
+                    Information(
+                      title: 'GTIN Unidade Master',
+                      info: produto.gtincodauxiliar2,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
