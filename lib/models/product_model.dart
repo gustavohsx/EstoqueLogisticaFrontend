@@ -24,6 +24,7 @@ class ProductModel {
   final dynamic gtincodauxiliar;
   final dynamic codauxiliar;
   final dynamic gtincodauxiliar2;
+  final dynamic codauxiliar2;
   final dynamic qtestger;
   final dynamic qtindeniz;
   final dynamic qtbloqueada;
@@ -57,6 +58,7 @@ class ProductModel {
     this.gtincodauxiliar,
     this.codauxiliar,
     this.gtincodauxiliar2,
+    this.codauxiliar2,
     this.qtestger,
     this.qtindeniz,
     this.qtbloqueada,

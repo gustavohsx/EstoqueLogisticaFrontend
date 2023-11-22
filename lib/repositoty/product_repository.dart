@@ -59,9 +59,8 @@ class ProductRepository {
         dynamic codauxiliartrib = record.data['codauxiliartrib'];
         dynamic gtincodauxiliar = record.data['gtincodauxiliar'];
         dynamic codauxiliar = record.data['codauxiliar'];
-        dynamic gtincodauxliar2 = (record.data['gtincodauxliar2'] != null)
-            ? record.data['gtincodauxliar2']
-            : ' ';
+        dynamic gtincodauxliar2 = record.data['gtincodauxiliar2'];
+        dynamic codauxiliar2 = record.data['codauxiliar2'];
         dynamic dtultent = record.data['dtultent'];
         return ProductModel(
           record.id,
@@ -89,6 +88,7 @@ class ProductRepository {
           gtincodauxiliar,
           codauxiliar,
           gtincodauxliar2,
+          codauxiliar2,
           qtdGeral,
           qtdAvaria,
           qtdBloqueada,

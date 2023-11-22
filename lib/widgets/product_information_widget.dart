@@ -11,7 +11,6 @@ class ProductInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
       alignment: Alignment.topLeft,
       margin: const EdgeInsets.all(20),
       // padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
@@ -39,7 +38,6 @@ class ProductInformationWidget extends StatelessWidget {
             ),
           ),
           Container(
-            clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(15),
@@ -169,6 +167,10 @@ class ProductInformationWidget extends StatelessWidget {
                       title: 'GTIN Unidade Master',
                       info: produto.gtincodauxiliar2,
                     ),
+                    Information(
+                      title: 'Unidade Master',
+                      info: produto.codauxiliar2,
+                    )
                   ],
                 ),
               ),
