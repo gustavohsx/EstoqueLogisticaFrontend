@@ -1,4 +1,5 @@
 import 'package:estoque_logistica/models/product_model.dart';
+import 'package:estoque_logistica/widgets/alternative_product_information_widget.dart';
 import 'package:estoque_logistica/widgets/product_information_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _ProductInformationState extends State<ProductInformation> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ProductInformationWidget(produto),
+              AlternativeProductInformationWidget(produto),
             ],
           ),
         ),
