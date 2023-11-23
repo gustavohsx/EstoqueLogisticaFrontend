@@ -33,10 +33,15 @@ class ProductRepository {
             .getFirstListItem('codprod="$codigo" || codauxiliar="$codigo"');
         dynamic descricao = record.data['descricao'];
         dynamic codprod = record.data['codprod'];
-        dynamic embalagem = record.data['embalagem'];
+        dynamic embalagem = record.data['embalagem']
+            .toString()
+            .replaceAll(r'(', '')
+            .replaceAll(r')', '');
         dynamic unidade = record.data['unidade'];
-        dynamic pesoLiquido = record.data['pesoliq'];
-        dynamic pesoBruto = record.data['pesobruto'];
+        dynamic pesoLiquido =
+            record.data['pesoliq'].toString().replaceAll(r'.', ',');
+        dynamic pesoBruto =
+            record.data['pesobruto'].toString().replaceAll(r'.', ',');
         dynamic codfab = record.data['codfab'];
         dynamic modulo = record.data['modulo'];
         dynamic rua = record.data['rua'];

@@ -1,6 +1,5 @@
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/widgets/alternative_product_information_widget.dart';
-import 'package:estoque_logistica/widgets/product_information_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProductInformation extends StatefulWidget {
@@ -23,9 +22,9 @@ class _ProductInformationState extends State<ProductInformation> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          produto.descricao ?? '',
-          style: const TextStyle(color: Colors.white),
+        title: const Text(
+          'Produto Encontrado',
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
       ),
