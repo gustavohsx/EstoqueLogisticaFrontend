@@ -1,6 +1,5 @@
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/style/base_text_styles.dart';
-import 'package:estoque_logistica/widgets/information_title.dart';
 import 'package:estoque_logistica/widgets/row_table_text_padding.dart';
 import 'package:estoque_logistica/widgets/row_table_text_padding_bold.dart';
 import 'package:flutter/material.dart';
@@ -147,7 +146,7 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                         TableRow(
                           children: [
                             RowTableTextPaddingBold(produto.qtestger),
-                            RowTableTextPaddingBold(produto.qtdisponivel),
+                            RowTableTextPaddingBold(produto.qtbloqueada),
                             RowTableTextPaddingBold(produto.qtindeniz),
                             RowTableTextPaddingBold(produto.qtdisponivel),
                           ],
