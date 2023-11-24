@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RowTableTextPadding extends StatelessWidget {
+class RowTableTextPaddingBoldLeft extends StatelessWidget {
   final dynamic texto;
-  const RowTableTextPadding(this.texto, {super.key});
+  const RowTableTextPaddingBoldLeft(this.texto, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,8 @@ class RowTableTextPadding extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: Text(
         '${texto}',
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );
   }

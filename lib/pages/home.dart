@@ -73,6 +73,11 @@ class _HomeState extends State<Home> {
                     SizedBox(
                       child: TextField(
                         controller: _controller,
+                        onTap: () {
+                          _controller.selection = TextSelection(
+                              baseOffset: 0,
+                              extentOffset: _controller.value.text.length);
+                        },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           label: Text('Digite o código'),
@@ -86,6 +91,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         var codigo = _controller.text;
                         searchProduct(codigo);
                       },
@@ -109,6 +115,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         CameraBarcode cam = CameraBarcode();
                         String codigo = await cam.scan();
                         if (codigo == '-1') {
@@ -116,6 +123,8 @@ class _HomeState extends State<Home> {
                         } else if (codigo == 'null') {
                           showErrorMessageCamera();
                         } else {
+                          _controller.text = codigo;
+                          setState(() {});
                           searchProduct(codigo);
                         }
                       },

@@ -10,7 +10,8 @@ class RowTableTextPaddingBold extends StatelessWidget {
       padding: const EdgeInsets.all(2.0),
       child: Text(
         '${texto}',
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );
   }

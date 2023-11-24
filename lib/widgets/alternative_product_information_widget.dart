@@ -2,6 +2,8 @@ import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/style/base_text_styles.dart';
 import 'package:estoque_logistica/widgets/row_table_text_padding.dart';
 import 'package:estoque_logistica/widgets/row_table_text_padding_bold.dart';
+import 'package:estoque_logistica/widgets/row_table_text_padding_bold_left.dart';
+import 'package:estoque_logistica/widgets/row_table_text_padding_left.dart';
 import 'package:flutter/material.dart';
 
 class AlternativeProductInformationWidget extends StatelessWidget {
@@ -15,7 +17,8 @@ class AlternativeProductInformationWidget extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       // padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 228, 228, 228),
+        color: Colors.amber,
+        // color: const Color.fromARGB(255, 228, 228, 228),
         borderRadius: BorderRadius.circular(15),
       ),
       child: SingleChildScrollView(
@@ -37,6 +40,7 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                           ),
                           Text(
                             '${produto.codprod}',
+                            textAlign: TextAlign.right,
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -58,7 +62,7 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                   bottomLeft: Radius.circular(15),
                   bottomRight: Radius.circular(15),
                 ),
-                color: Color.fromARGB(255, 231, 224, 236),
+                color: Color.fromARGB(255, 245, 222, 179),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -145,10 +149,20 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                         ),
                         TableRow(
                           children: [
-                            RowTableTextPaddingBold(produto.qtestger),
+                            Text(
+                              '${produto.qtestger}',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
                             RowTableTextPaddingBold(produto.qtbloqueada),
                             RowTableTextPaddingBold(produto.qtindeniz),
-                            RowTableTextPaddingBold(produto.qtdisponivel),
+                            Text(
+                              '${produto.qtdisponivel}',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
                           ],
                         ),
                       ],
@@ -205,8 +219,8 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                         ),
                         TableRow(
                           children: [
-                            RowTableTextPaddingBold(produto.pesoliq),
-                            RowTableTextPaddingBold(produto.pesobruto),
+                            RowTableTextPaddingBold('${produto.pesoliq} kg'),
+                            RowTableTextPaddingBold('${produto.pesobruto} kg'),
                           ],
                         ),
                       ],
@@ -221,45 +235,52 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                     Table(
                       defaultVerticalAlignment:
                           TableCellVerticalAlignment.middle,
+                      columnWidths: const {
+                        0: FlexColumnWidth(2),
+                        1: FlexColumnWidth(2.5),
+                      },
                       border: TableBorder.symmetric(inside: const BorderSide()),
                       children: [
                         TableRow(
                           children: [
-                            const RowTableTextPadding('GTIN Unid. Tributável:'),
-                            RowTableTextPaddingBold(
+                            const RowTableTextPaddingLeft(
+                                'GTIN Unid. Tributável:'),
+                            RowTableTextPaddingBoldLeft(
                                 'GTIN - ${produto.gtincodauxiliartrib}'),
                           ],
                         ),
                         TableRow(
                           children: [
-                            const RowTableTextPadding('EAN Unid. Tributável:'),
-                            RowTableTextPaddingBold(produto.codauxiliartrib),
+                            const RowTableTextPaddingLeft(
+                                'EAN Unid. Tributável:'),
+                            RowTableTextPaddingBoldLeft(
+                                produto.codauxiliartrib),
                           ],
                         ),
                         TableRow(
                           children: [
-                            const RowTableTextPadding('GTIN Unid. Venda:'),
-                            RowTableTextPaddingBold(
+                            const RowTableTextPaddingLeft('GTIN Unid. Venda:'),
+                            RowTableTextPaddingBoldLeft(
                                 'GTIN - ${produto.gtincodauxiliar}'),
                           ],
                         ),
                         TableRow(
                           children: [
-                            const RowTableTextPadding('Unidade Venda:'),
-                            RowTableTextPaddingBold(produto.codauxiliar),
+                            const RowTableTextPaddingLeft('Unidade Venda:'),
+                            RowTableTextPaddingBoldLeft(produto.codauxiliar),
                           ],
                         ),
                         TableRow(
                           children: [
-                            const RowTableTextPadding('GTIN Unid. Master:'),
-                            RowTableTextPaddingBold(
+                            const RowTableTextPaddingLeft('GTIN Unid. Master:'),
+                            RowTableTextPaddingBoldLeft(
                                 'GTIN - ${produto.gtincodauxiliar2}'),
                           ],
                         ),
                         TableRow(
                           children: [
-                            const RowTableTextPadding('Unidade Master:'),
-                            RowTableTextPaddingBold(produto.codauxiliar2),
+                            const RowTableTextPaddingLeft('Unidade Master:'),
+                            RowTableTextPaddingBoldLeft(produto.codauxiliar2),
                           ],
                         ),
                       ],
