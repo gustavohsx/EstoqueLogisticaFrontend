@@ -21,6 +21,7 @@ class _ProductInformationState extends State<ProductInformation> {
         ModalRoute.of(context)!.settings.arguments as ProductModel;
 
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(240, 240, 240, 1.0),
       appBar: AppBar(
         title: const Text(
           'Produto Encontrado',

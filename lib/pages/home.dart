@@ -50,6 +50,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(240, 240, 240, 1.0),
       appBar: AppBar(
         title: const Text(
           'Verificar Estoque',
