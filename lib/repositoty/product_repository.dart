@@ -9,7 +9,7 @@ class ProductRepository {
     String? user = await prefs.read('user');
     String? password = await prefs.read('password');
     bool isLogin = false;
-    final pb = PocketBase(host ?? 'https://spessoa.fly.dev');
+    final pb = PocketBase(host ?? 'http://192.168.201.216:8090/');
     try {
       await pb.collection('users').authWithPassword(
             user ?? 'default',
@@ -18,7 +18,7 @@ class ProductRepository {
       isLogin = true;
     } catch (e) {
       isLogin = false;
-      print('erroooooooooooooooooooorrrrrrrrrrrrrrrrrrrrrr');
+      print('Erro Autenticação');
       print(e);
       String erroComplete = e.toString();
       String erroSplit =
