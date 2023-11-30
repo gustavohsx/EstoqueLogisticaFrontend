@@ -12,8 +12,8 @@ class ProductRepository {
     final pb = PocketBase(host ?? 'http://192.168.201.216:8090/');
     try {
       await pb.collection('users').authWithPassword(
-            user ?? 'default',
-            password ?? 'Sorriso.123',
+            user ?? '',
+            password ?? '',
           );
       isLogin = true;
     } catch (e) {
@@ -33,9 +33,8 @@ class ProductRepository {
     }
     if (isLogin) {
       try {
-        RecordModel record = await pb
-            .collection('produto')
-            .getFirstListItem('codprod="$codigo" || codauxiliar="$codigo"');
+        RecordModel record = await pb.collection('produto').getFirstListItem(
+            'codprod="$codigo" || codauxiliar="$codigo" || codauxiliartrib="$codigo" || codauxiliar2="$codigo"');
         dynamic descricao = record.data['descricao'];
         dynamic codprod = record.data['codprod'];
         dynamic embalagem = record.data['embalagem']
