@@ -20,11 +20,16 @@ class ProductRepository {
       isLogin = false;
       print('Erro Autenticação');
       print(e);
-      String erroComplete = e.toString();
-      String erroSplit =
-          erroComplete.substring((erroComplete.lastIndexOf('message:')));
-      String erro = erroSplit.substring(9, erroSplit.lastIndexOf('data') - 3);
-      return erro;
+      try {
+        String erroComplete = e.toString();
+        String erroSplit =
+            erroComplete.substring((erroComplete.lastIndexOf('message:')));
+        String erro = erroSplit.substring(9, erroSplit.lastIndexOf('data') - 3);
+        return erro;
+      } catch (e) {
+        String erro = 'Conexão';
+        return erro;
+      }
     }
     if (isLogin) {
       try {

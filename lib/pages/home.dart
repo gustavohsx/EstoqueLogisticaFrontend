@@ -79,6 +79,11 @@ class _HomeState extends State<Home> {
                               baseOffset: 0,
                               extentOffset: _controller.value.text.length);
                         },
+                        onSubmitted: (value) {
+                          if (value.isNotEmpty) {
+                            searchProduct(value);
+                          }
+                        },
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           label: Text('Digite o código'),

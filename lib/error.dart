@@ -3,7 +3,8 @@ class Error {
     "Failed to authenticate":
         "Informações de Login Incorretas. Verifique o Endereço do Servidor, Usuário e a Senha!",
     "The requested resource wasn't found": "Produto Não foi Encontrado!",
-    "-1": 'Consulta Pela Câmera Cancelada pelo Usuário!'
+    "-1": "Consulta Pela Câmera Cancelada pelo Usuário!",
+    "Conexão": "Erro ao tentar Conectar ao Servidor!"
   };
 
   searchError(String message) {
