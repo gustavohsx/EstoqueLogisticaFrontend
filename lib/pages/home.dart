@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/repositoty/product_repository.dart';
 import 'package:estoque_logistica/widgets/alerts.dart';
@@ -17,6 +19,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late TextEditingController _controller;
   Alerts alerts = Alerts();
+  bool carregando = false;
 
   @override
   void initState() {
@@ -38,6 +41,9 @@ class _HomeState extends State<Home> {
   }
 
   void searchProduct(String codigo) async {
+    setState(() {
+      carregando = true;
+    });
     final repositorio = ProductRepository();
     dynamic produto = await repositorio.findOneProduct(codigo);
     if (produto.runtimeType != ProductModel) {
@@ -45,6 +51,9 @@ class _HomeState extends State<Home> {
     } else {
       goProductInfo(produto);
     }
+    setState(() {
+      carregando = false;
+    });
   }
 
   @override
@@ -118,6 +127,10 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 20),
+                    carregando
+                        ? const Center(child: CircularProgressIndicator())
+                        : const SizedBox(),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () async {
