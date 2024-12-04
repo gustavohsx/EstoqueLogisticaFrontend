@@ -20,7 +20,7 @@ class _ConfigurationState extends State<Configuration> {
   late TextEditingController _passwordController;
 
   getServer() async {
-    server = await sharedPref.read('server') ?? 'http://192.168.201.95:8090';
+    server = await sharedPref.read('server') ?? 'http://192.168.201.95:8080';
     setState(() {});
   }
 

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:estoque_logistica/repositoty/product_repository.dart';
 import 'package:estoque_logistica/widgets/alerts.dart';
@@ -7,7 +5,7 @@ import 'package:estoque_logistica/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:estoque_logistica/barcode/barcode.dart';
-import 'package:estoque_logistica/error.dart';
+// import 'package:estoque_logistica/error.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -32,8 +30,9 @@ class _HomeState extends State<Home> {
   }
 
   void showErrorMessage(message) {
-    Error error = Error();
-    alerts.generic(context, error.searchError(message));
+    // Error error = Error();
+    // alerts.generic(context, error.searchError(message));
+    alerts.generic(context, message);
   }
 
   void showErrorMessageCamera() {
