@@ -186,7 +186,8 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                             RowTableTextPadding('TIPO'),
                             RowTableTextPadding('ALT'),
                             RowTableTextPadding('LASTRO'),
-                            RowTableTextPadding('QTD PALETE'),
+                            RowTableTextPadding('QTD/PALETE'),
+                            RowTableTextPadding('QTD DE PALETES'),
                           ],
                         ),
                         TableRow(
@@ -195,6 +196,7 @@ class AlternativeProductInformationWidget extends StatelessWidget {
                             RowTableTextPaddingBold(produto.alturapal),
                             RowTableTextPaddingBold(produto.lastropal),
                             RowTableTextPaddingBold(produto.qttotal),
+                            RowTableTextPaddingBold(produto.qtpalete),
                           ],
                         ),
                       ],

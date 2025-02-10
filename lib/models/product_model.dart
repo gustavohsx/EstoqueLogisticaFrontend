@@ -15,6 +15,7 @@ class ProductModel {
   final dynamic alturapal;
   final dynamic lastropal;
   final dynamic qttotal;
+  final dynamic qtpalete;
   final dynamic alturam3;
   final dynamic larguram3;
   final dynamic comprimentom3;
@@ -49,6 +50,7 @@ class ProductModel {
     this.alturapal,
     this.lastropal,
     this.qttotal,
+    this.qtpalete,
     this.alturam3,
     this.larguram3,
     this.comprimentom3,
