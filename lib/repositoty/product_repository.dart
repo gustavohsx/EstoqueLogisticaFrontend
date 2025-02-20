@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:estoque_logistica/config/shared_pref.dart';
 import 'package:estoque_logistica/models/product_model.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert'; // Para converter JSON
+import 'dart:convert';
+
+import 'package:http/io_client.dart'; // Para converter JSON
 
 class ProductRepository {
   Future<dynamic> findOneProduct(String codigo) async {
@@ -10,9 +14,16 @@ class ProductRepository {
     try {
       final url = host != null
           ? '$host/api/produto-app-estoque/consulta/$codigo'
-          : 'https://192.168.201.95:8080/api/produto-app-estoque/consulta/$codigo';
-      final response = await http.get(Uri.parse(url));
-      // print(response.body);
+          : 'https://192.168.201.95:8070/api/produto-app-estoque/consulta/$codigo';
+      HttpClient client = HttpClient();
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      IOClient ioClient = IOClient(client);
+
+      final response = await ioClient.get(Uri.parse(url));
+      print(response.body);
+      print(response.headers);
+      print(response.statusCode);
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         return ProductModel(
@@ -56,6 +67,7 @@ class ProductRepository {
         return 'Erro';
       }
     } catch (e) {
+      print(e);
       return 'Erro';
     }
   }
